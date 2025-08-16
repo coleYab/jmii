@@ -1,0 +1,1 @@
+export const API_URL = import.meta.env.BETTER_AUTH_URL ?? 'http://localhost:2480';

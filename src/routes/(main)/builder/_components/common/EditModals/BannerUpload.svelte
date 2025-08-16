@@ -1,0 +1,92 @@
+<script lang="ts">
+	import type { Profile } from '$lib/types/profile';
+
+	import { innerWidth } from 'svelte/reactivity/window';
+
+	import * as Sheet from '$lib/components/ui/sheet/index.js';
+	import * as Drawer from '$lib/components/ui/drawer';
+
+	import { Button } from '$lib/components/ui/button';
+
+	import BannerImageUpload from '$lib/components/common/BannerImageUpload.svelte';
+
+	let {
+		profileData,
+		showDialog = $bindable(),
+		refresh
+	}: { profileData: Profile | null; showDialog: boolean; refresh: () => void } = $props();
+
+	let isMobile = $derived(innerWidth.current && innerWidth.current < 768);
+
+	// Handle image upload
+	async function handleBannerUpload(event: CustomEvent<{ url: string }>) {
+		if (!profileData) return;
+
+		try {
+			const updateData = { coverimage: event.detail.url };
+			const response = await fetch('/api/user/profile', {
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(updateData)
+			});
+
+			if (response.ok) {
+				const data = await response.json();
+				profileData = data.profile;
+				showDialog = false;
+				refresh();
+			}
+		} catch (error) {
+			console.error('Error updating profile image:', error);
+		}
+	}
+</script>
+
+{#if isMobile}
+	<Drawer.Root bind:open={showDialog}>
+		<Drawer.Content>
+			<Drawer.Header class="text-left">
+				<Drawer.Title>Upload Banner Image</Drawer.Title>
+				<Drawer.Description>Choose and crop a new banner image for your profile.</Drawer.Description
+				>
+			</Drawer.Header>
+			<div class="flex-1 overflow-y-auto px-4 py-4">
+				<BannerImageUpload
+					currentImage={profileData?.coverimage}
+					on:upload={handleBannerUpload}
+					on:start={() => console.log('Banner upload started')}
+					on:error={(e) => console.error('Banner upload error:', e.detail.error)}
+				/>
+			</div>
+			<Drawer.Footer class="pt-2">
+				<Drawer.Close>
+					<Button variant="outline" class="w-full">Close</Button>
+				</Drawer.Close>
+			</Drawer.Footer>
+		</Drawer.Content>
+	</Drawer.Root>
+{:else}
+	<Sheet.Root bind:open={showDialog}>
+		<Sheet.Content side="right">
+			<Sheet.Header>
+				<Sheet.Title>Upload Banner Image</Sheet.Title>
+				<Sheet.Description>Choose and crop a new banner image for your profile.</Sheet.Description>
+			</Sheet.Header>
+
+			<div class="flex-1 overflow-y-auto p-6">
+				<BannerImageUpload
+					currentImage={profileData?.coverimage}
+					on:upload={handleBannerUpload}
+					on:start={() => console.log('Banner upload started')}
+					on:error={(e) => console.error('Banner upload error:', e.detail.error)}
+				/>
+			</div>
+			
+			<Sheet.Footer>
+				<Sheet.Close>
+					<Button variant="outline">Close</Button>
+				</Sheet.Close>
+			</Sheet.Footer>
+		</Sheet.Content>
+	</Sheet.Root>
+{/if}

@@ -1,0 +1,25 @@
+import type { LayoutServerLoad } from './$types';
+import { redirect } from '@sveltejs/kit';
+
+import { auth } from '$lib/auth';
+import chalk from 'chalk';
+
+export const load: LayoutServerLoad = async ({ request, fetch }) => {
+	const session = await auth.api.getSession({
+		headers: request.headers
+	});
+
+	if (!session) {
+		console.log(chalk.bgBlue('USER :  No session'));
+		throw redirect(302, '/login');
+	}
+
+	const profile = await fetch('/api/user/profile');
+	let profileData = await profile.json();
+
+	profileData = JSON.parse(JSON.stringify(profileData));
+
+	return {
+		profile: profileData.profile
+	};
+};

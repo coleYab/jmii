@@ -1,0 +1,308 @@
+@import '@uploadthing/svelte/styles.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Lexend';
+	src: url('/fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Playfair Display';
+	src: url('/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+	font-weight: 400 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Playfair Display';
+	src: url('/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf')
+		format('truetype');
+	font-weight: 400 900;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Amatic SC';
+	src: url('/fonts/Amatic_SC/AmaticSC-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Amatic SC';
+	src: url('/fonts/Amatic_SC/AmaticSC-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Dawning of a New Day';
+	src: url('/fonts/Dawning_of_a_New_Day/DawningofaNewDay-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Josefin Sans';
+	src: url('/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf') format('truetype');
+	font-weight: 100 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Josefin Sans';
+	src: url('/fonts/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf') format('truetype');
+	font-weight: 100 700;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Lato';
+	src: url('/fonts/Lato/Lato-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato';
+	src: url('/fonts/Lato/Lato-Italic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Lato';
+	src: url('/fonts/Lato/Lato-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lato';
+	src: url('/fonts/Lato/Lato-BoldItalic.ttf') format('truetype');
+	font-weight: 700;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('/fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+	font-weight: 300 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('/fonts/Open_Sans/OpenSans-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+	font-weight: 300 800;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fredoka';
+	src: url('/fonts/Fredoka/Fredoka-VariableFont_wdth,wght.ttf') format('truetype');
+	font-weight: 300 700;
+	font-style: normal;
+}
+
+/* Good rounded font  */
+@font-face {
+	font-family: 'Fredoka';
+	src: url('/fonts/Fredoka/Fredoka-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+	font-weight: 300 700;
+	font-style: italic;
+}
+
+/* Add Pacifico font face */
+@font-face {
+	font-family: 'Pacifico';
+	src: url('/fonts/Pacifico/Pacifico-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+/* End add Pacifico font face */
+
+@layer base {
+	:root {
+		--light-50: 0 0% 99.5%;
+		--light-100: 0 0% 96.9%;
+		--light-200: 0 0% 92.1%;
+		--light-300: 0 0% 79%;
+		--light-400: 0 0% 72%;
+		--light-500: 0 0% 64.9%;
+		--light-600: 0 0% 56.9%;
+		--light-700: 0 0% 45%;
+		--light-800: 0 0% 38%;
+		--light-900: 0 0% 27%;
+		--light-950: 0 0% 25%;
+
+		--background: var(--light-50);
+		--foreground: var(--light-800);
+
+		--muted: var(--light-100);
+		--muted-foreground: var(--light-700);
+
+		--popover: var(--light-50);
+		--popover-foreground: var(--light-950);
+
+		--card: var(--light-50);
+		--card-foreground: var(--light-950);
+
+		--border: var(--light-300);
+		--input: var(--light-200);
+		--ring: var(--light-300);
+		--radius: 0.45rem;
+
+		--primary: var(--light-900);
+		--primary-foreground: var(--light-50);
+		--secondary: var(--light-200);
+		--secondary-foreground: var(--light-800);
+		--accent: var(--light-200);
+		--accent-foreground: var(--light-900);
+		--destructive: 0 50% 50%;
+		--destructive-foreground: 0 0% 98%;
+		--success: 120 30% 40%;
+		--success-foreground: 0 0% 98%;
+		--info: 210 30% 40%;
+		--info-foreground: 0 0% 98%;
+		--warning: 40 40% 50%;
+		--warning-foreground: 0 0% 98%;
+
+		--sidebar-background: var(--light-100);
+		--sidebar-foreground: var(--light-800);
+		--sidebar-primary: var(--light-900);
+		--sidebar-primary-foreground: var(--light-50);
+		--sidebar-accent: var(--light-200);
+		--sidebar-accent-foreground: var(--light-900);
+		--sidebar-border: var(--light-500);
+		--sidebar-ring: var(--light-400);
+	}
+
+	.dark {
+		/* Component system variables - aligned with dark theme colors */
+		--background: var(--dark-base);
+		/* Using dark-base (180 5% 17%) for background */
+		--foreground: var(--dark-content);
+		/* Using dark-content (60 9% 92%) for foreground */
+		--muted: 180 5% 22%;
+		/* Slightly lighter than dark-base */
+		--muted-foreground: 36 30% 80%;
+		/* Muted version of content-secondary */
+		--popover: var(--dark-800);
+		/* Darker than base - dark-800 (180 6% 13%) */
+		--popover-foreground: var(--dark-content);
+		/* Same as foreground */
+		--card: var(--dark-800);
+		/* Dark card background - dark-800 (180 6% 13%) */
+		--card-foreground: var(--dark-content);
+		/* Same as foreground */
+		--border: var(--dark-600);
+		/* Dark border - dark-600 (180 9% 27%) */
+		--input: var(--dark-600);
+		/* Same as border */
+		--primary: var(--dark-content);
+		/* Using content color as primary - (60 9% 92%) */
+		--primary-foreground: var(--dark-800);
+		/* Dark color on light primary */
+		--secondary: var(--dark-700);
+		/* Dark secondary - dark-700 (180 5% 17%) */
+		--secondary-foreground: var(--dark-100);
+		/* Light on dark secondary - dark-100 (180 4% 77%) */
+		--accent: 36 30% 80%;
+		/* Warm, muted tone that contrasts with dark background */
+		--accent-foreground: 180 5% 17%;
+		/* Dark text for contrast */
+		--destructive: 0 62% 40%;
+		/* Darker red for dark mode destructive */
+		--destructive-foreground: 0 0% 98%;
+		/* Light text on destructive */
+		--ring: var(--dark-content-secondary);
+		/* Ring using content-secondary */
+
+		/* Sidebar colors for dark theme */
+		--sidebar-background: var(--dark-900);
+		--sidebar-foreground: var(--dark-100);
+		--sidebar-primary: var(--dark-content);
+		--sidebar-primary-foreground: var(--dark-900);
+		--sidebar-accent: var(--dark-700);
+		--sidebar-accent-foreground: var(--dark-content);
+		--sidebar-border: var(--dark-600);
+		--sidebar-ring: var(--dark-content-secondary);
+
+		/* Dark theme specific colors from tailwind.config.js */
+		--dark-content: 60 9% 92%;
+		/* #EDEDE9 */
+		--dark-content-secondary: 36 59% 92%;
+		/* #F5EBE0 */
+		--dark-base: 180 5% 17%;
+		/* #282D2D */
+
+		/* Dark theme color scales from tailwind.config.js */
+		--dark-50: 180 3% 83%;
+		/* #CED4D4 */
+		--dark-100: 180 4% 77%;
+		/* #C1C8C8 */
+		--dark-200: 180 5% 67%;
+		/* #A6B0B0 */
+		--dark-300: 180 6% 57%;
+		/* #8B9898 */
+		--dark-400: 180 7% 47%;
+		/* #717F7F */
+		--dark-500: 180 9% 37%;
+		/* #596464 */
+		--dark-600: 180 9% 27%;
+		/* #414949 */
+		--dark-700: 180 5% 17%;
+		/* #282D2D - same as dark-base */
+		--dark-800: 180 6% 13%;
+		/* #1F2323 */
+		--dark-900: 180 6% 10%;
+		/* #181B1B */
+		--dark-950: 180 6% 8%;
+		/* #131616 */
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+		@apply font-content;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+
+.btn-base {
+	@apply rounded-2xl border-4 border-black 
+	
+	px-6 py-3 text-base font-bold transition-all
+
+	/* shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] */
+	/* hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] */
+	/* active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] */
+	
+	active:translate-y-0.5 ;
+
+	box-shadow: 4px 4px 0px 0px  linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c)
+
+}
+
+@layer utilities {
+	.scrollbar-hide {
+		/* Hide scrollbar for Chrome, Safari and Opera */
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		
+		/* Hide scrollbar for IE, Edge and Firefox */
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+	}
+}
