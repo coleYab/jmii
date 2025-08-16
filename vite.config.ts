@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
 			port: 5173
 		},
         preview: {
+            port: 3000,
             allowedHosts: ["jmii.onrender.com"],
         },
 		optimizeDeps: {
