@@ -129,8 +129,8 @@ export const auth = betterAuth({
 		google: {
 			clientId: process.env.GOOGLE_CLIENT_ID as string,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-			redirectURI: process.env.BETTER_AUTH_URL?.includes('jami')
-				? 'https://jami.et/api/auth/callback/google'
+			redirectURI: process.env.BETTER_AUTH_URL?.includes('jmii')
+				? 'https://jmii.onrender.com/api/auth/callback/google'
 				: 'http://localhost:5173/api/auth/callback/google'
 		}
 	},
