@@ -22,6 +22,9 @@ export default defineConfig(({ mode }) => {
 			host: true,
 			port: 5173
 		},
+        preview: {
+            allowedHosts: ["jmii.onrender.com"],
+        },
 		optimizeDeps: {
 			include: [
 				'phosphor-svelte',
